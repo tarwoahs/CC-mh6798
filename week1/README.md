@@ -1,4 +1,5 @@
 # Week 1 notes
+# Michelle Huang's Creative Coding Repo
 
 ---
 
