@@ -2,14 +2,14 @@
 // this is the only part of the file you need to edit!
 // computer go home
 const quotes = [
-  { text: "the intersection of programming, design, and art", source: "one eyed Scott" },
-  { text: "a chance for code to be wrong", source: "Sara" },
-  { text: "surprise, exploration, and aesthetic exploration", source: "Sally" },
-  { text: "process over results", source: "Sam" },
-  { text: "form over function", source: "Sean" },
-  { text: "iterative and experimental", source: "Scooby" },
-  { text: "a community of practice", source: "Seth" },
-  { text: "an opportunity to stick it to the man", source: "Shifty-eyed Susan" }
+  { text: "the application of programming techniques in the act of creation", source: "Francis Stokes" },
+  { text: "new interdisciplinary art form that bridges the gap between technologists and artists", source: "Ahmad Moussa" },
+  { text: "a realm of programming for expressive and/or artistic purposes", source: "Amelia Neville" },
+  { text: "using code for artistic expression instead of it being simply functional", source: "Tinna Lyngholm Thomsen" },
+  { text: "deliberate act of letting go and seeing where the process takes you", source: "Patrik Hübner" },
+  { text: "create something expressive instead of something functional", source: "Sean Zhai" },
+  { text: "practice of making art with code", source: "Andrew Bryant" },
+  { text: "programming without strict pre-planning", source: "Joachim Rodriguez y Romero" }
 ];
 // no need to edit anything below this line! 
 // if you have made an error, you can check your history to see what might have gone wrong
