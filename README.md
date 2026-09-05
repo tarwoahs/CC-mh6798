@@ -21,7 +21,6 @@ I think that code is a type of language that has existed in many different kinds
 One thing I am excited to try or learn this semester is being able to go more into depth into the relationship of art and coding. During my undergrad as Information Systems major, I worked on a lot surface-level of coding that was more logical and structured. I was taught to follow instructions, solve problems step by step, and try to reach a specific output. I look forward to creative coding as a way to bring my own interpretation of how I personally want to communicate something. I am excited to explore, play, experiment with code in a more creative way and learn how I can use it as an expression of art and ideas in my own profound style. 
 
 
-
 ---
 
 Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
