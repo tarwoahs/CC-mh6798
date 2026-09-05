@@ -12,11 +12,20 @@ Please use this tempate to create a repository that contains your coursework for
 ```
 You can simply copy the line above, replacing the directory name with the name of the folder you've just created, and the inner text with a description of the new activity.
 
+# Week 1 Reading Response
+
+What do you think code is, how do you see it working for - or against - you. Is there anything you're excited to try or learn this semester?
+
+I think that code is a type of language that has existed in many different kinds of forms, from historical times to now. Code is primarily a way of communication because it takes either a set of instruction, rules, or symbols and converts that into another form. Due to that, I do not see code automatically good or bad. I see code working neutrally depending on how users may use it. It can work for us by making things easier, accessible, or more creative. On the other hand, it could also work against us if we depend on it too much without questioning or understanding how it works. I think its important to be aware and careful of the code and systems that we use every day, especially when we are unaware their backend systems. It is helpful to use code to fasten the process, but not to do the thinking for you.
+
+One thing I am excited to try or learn this semester is being able to go more into depth into the relationship of art and coding. During my undergrad as Information Systems major, I worked on a lot surface-level of coding that was more logical and structured. I was taught to follow instructions, solve problems step by step, and try to reach a specific output. I look forward to creative coding as a way to bring my own interpretation of how I personally want to communicate something. I am excited to explore, play, experiment with code in a more creative way and learn how I can use it as an expression of art and ideas in my own profound style. 
+
+
+
 ---
 
 Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
 
----
 ---
 
 # Heading1
