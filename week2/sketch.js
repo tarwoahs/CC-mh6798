@@ -30,7 +30,7 @@ function draw() {
         scale(0.8);
         translate(-150, 0); //move to left edge body
         fill(15, 90, 100);
-        triangle(0, -90, 0, -90, -130, 0);
+        triangle(0, -90, 0, 90, -130, 0);
         pop();
 
         // eye of the fish
@@ -169,6 +169,7 @@ function draw() {
         ellipse(0, 0, 25, 25);
         pop();
     }
+}
     function mousePressed() {
         //move to next varitation whenever user clicks
         variation = variation + 1;
@@ -177,4 +178,4 @@ function draw() {
             variation = 0;
         }
     }
-}
+
