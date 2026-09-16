@@ -1,6 +1,6 @@
 /* Michelle Huang
    Creating Coding Week 2 Assignment
-   Fish Animation
+   Fish Process Drawing
    */
 
 let variation = 0;
@@ -11,7 +11,7 @@ function setup() {
   rectMode(CENTER);
 }
 
-// first variation
+// first variations
 // fish enters from the left side of the screen and swims to the right side of the screen
 function draw() {
     if (variation === 0) {
