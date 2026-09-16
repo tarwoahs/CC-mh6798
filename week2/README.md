@@ -6,6 +6,8 @@ The variations show the fish move across the "fish tank," acknowledging the user
 
 In this code I used translate, rotate, and scale to change the fish's positions, directions, and size. I also changed the HSB for color variants so it may be similar to a rainbow fish? I also used mousePressed so every click would move to the next variation and shows that it is moving across the screen or "fishtank."
 
+At first I was sort of confused whether my sketch should be viewed as one fish 5 different poses or 5 different conceptual variations of the 3 same shapes.
+
 
 
 ## Getting Started
