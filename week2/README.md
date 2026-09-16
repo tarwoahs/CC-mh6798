@@ -1,4 +1,12 @@
-# Week 2
+# Michelle Huang Week 2
+
+My fish is made with 3 simple shapes: a square for the body, a triangle for the tail, and a circle for the eye.
+Each click changes the fish into a different variation from moving, rotating, scaling, and changing colors.
+The variations show the fish move across the "fish tank," acknowledging the user by turning around, and eventually reaching to the other side of the screen. 
+
+In this code I used translate, rotate, and scale to change the fish's positions, directions, and size. I also changed the HSB for color variants so it may be similar to a rainbow fish? I also used mousePressed so every click would move to the next variation and shows that it is moving across the screen or "fishtank."
+
+
 
 ## Getting Started
 
