@@ -1,26 +1,28 @@
-let xPos;
-let yPos;
-
+let variation = 0;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    xPos = width/2;
-    yPos = height/2;
-    randomX=random(0,width/2);
-    console.log("xPos: " + xPos + " yPos: " + yPos);
-
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB, 360, 100, 100);
+  rectMode(CENTER);
 }
 
+// first variation
+// fish enters from the left side of the screen and swims to the right side of the screen
 function draw() {
-    background (180, 10, 220);
-    ellipse(xPos, yPos, 100);
-    ellipse(xPos/2, yPos/2, 100);
-    ellipse(xPos+randomX, yPos-30, 100)
-    
-}
+    if (variation === 0) {
+        background(200, 50, 90);
+        
+        push();
+        translate(50 + height/2);
+        scale(0.8);
+        fill(30,85,100);
+        rect(0, 0, 300, 300);
+        pop();
 
-function mousePressed() {
-    xPos = random(0, width);
-    yPos = random(0, height);
-    console.log("xPos: " + xPos + " yPos: " + yPos);
-}
+        push();
+        translate(50, height/2);
+        scale(0.8);
+        fill(15, 90, 100);
+        rect(0, 0, 300, 300);
+        pop();
+    }
