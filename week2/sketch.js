@@ -147,14 +147,14 @@ function draw() {
         background(198, 65, 88); //bg 5
         // body of the fish
         push();
-        translate(width +125, height/2);
+        translate(width -75, height/2);
         scale(0.8);
         fill(275,55,95);
         rect(0, 0, 300, 300);
         pop();
         //tail
         push();
-        translate(width +125, height/2);
+        translate(width -75, height/2);
         scale(0.8);
         translate(-150, 0); //move edge of body
         fill(300, 65, 90);
@@ -162,7 +162,7 @@ function draw() {
         pop();
         //eye
         push();
-        translate(width +125, height/2);
+        translate(width -75, height/2);
         scale(0.8);
         translate(95, -55); //moves eye to front, and upper part of the fish
         fill(0, 0, 0);
@@ -171,7 +171,7 @@ function draw() {
     }
 }
     function mousePressed() {
-        //move to next varitation whenever user clicks
+        //move to next variation whenever user clicks
         variation = variation + 1;
         //after 5, return to variant 1
         if (variation > 4) {
