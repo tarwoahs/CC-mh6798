@@ -1,7 +1,7 @@
 /* Michelle Huang
 *  Creative Coding Week 3 Assignment
 *  Iteration Generation
-*  Idea 1
+*  Idea 1a
 */
 
 // mouse up = circles separate
