@@ -1,18 +1,18 @@
 /* Michelle Huang
 *  Creative Coding Week 3 Assignment
 *  Iteration Generation
-*  Idea 1a
+*  Idea 1
 */
 
-// mouse up = circles separate
-// mouse down = circles merge into one
-// spacing controls space between each color wheel
-// circleSize controls each individual circle
-// alpha goes from 0 to 1 because of how colorMode is set
+// mouse up == circles separate, mouse down == circles merge
+// circle radius becomes smaller as the mouse moves down
+// small automatic pulse oo
+// each circle color wheel starts at a slightly different angle
+// third loop creates the 8 circles
+// transparent colors blend when circles overlap, creating new colors
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
     colorMode(HSB, 360, 100, 100, 1);
     angleMode(DEGREES);
     noStroke();
@@ -20,28 +20,19 @@ function setup() {
 
 function draw() {
     background(0, 0, 97);
-
     // keeps mouseY between the top and bottom of the canvas
     let mousePositionY = constrain(mouseY, 0, height);
 
     // radius is 32 at top and becomes 0 at bottom
     // 32 keeps the full motif around 100px by 100px
-    let mouseRadius = map(
-        mousePositionY,
-        0,
-        height,
-        32,
-        0
+    let mouseRadius = map( 
+        mousePositionY, 0, height, 32, 0
     );
 
     // circles slowly pulse in and out on their own
     // sin gives a value between -1 and 1
     let pulse = map(
-        sin(frameCount * 0.04),
-        -1,
-        1,
-        0.85,
-        1.15
+        sin(frameCount * 0.04), -1, 1, 0.85, 1.15
     );
 
     // mouse controls the main movement
@@ -89,11 +80,9 @@ function draw() {
                 let angle =
                     circleNumber *
                     (360 / circleCount);
-
                 // finds the x and y position around the center
                 let circleX =
                     cos(angle) * ringRadius;
-
                 let circleY =
                     sin(angle) * ringRadius;
 
@@ -111,15 +100,11 @@ function draw() {
                 // overlapping circles create different colors
                 fill(
                     circleHue,
-                    90,
-                    100,
-                    0.5
+                    90, 100, 0.5
                 );
 
                 circle(
-                    circleX,
-                    circleY,
-                    circleSize
+                    circleX, circleY, circleSize
                 );
             }
 

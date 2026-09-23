@@ -1,20 +1,18 @@
 /* Michelle Huang
 *  Creative Coding Week 3 Assignment
-*  Iteration Generation
+*  Iteration box generation
 *  Idea 3
 */
 
-// top rows stay organized
-// bottom rows become more messy
-// mouse left = organized grid
-// mouse right = more movement and rotation
-// randomSeed keeps the pattern from flickering every frame
+// top rows stay organized, bottom rows become more messy
+// mouse left = organized grid, mouse right = more disorder
+// disorder changes the position and rotation of each square
+// x and y loops repeat the squares across the canvas
+// randomSeed keeps the squares from flickering every frame
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-
     angleMode(DEGREES);
-
     noFill();
     stroke(20);
     strokeWeight(1.5);
@@ -24,23 +22,13 @@ function draw() {
     background(245);
 
     // keeps mouseX inside the canvas
-    let mousePositionX = constrain(
-        mouseX,
-        0,
-        width
-    );
+    let mousePositionX = constrain(mouseX, 0, width);
 
-    // moving right increases the most disorder allowed
-    let maximumDisorder = map(
-        mousePositionX,
-        0,
-        width,
-        0,
-        35
-    );
+    // moving the mouse right increases the most disorder allowed
+    let maximumDisorder = map(mousePositionX, 0, width, 0, 35);
 
     // spacing controls distance between squares
-    // squareSize stays under the 100px motif size
+    // squareSize stays under 100px
     let spacing = 90;
     let squareSize = 65;
 
@@ -49,18 +37,10 @@ function draw() {
     randomSeed(10);
 
     // x loop repeats squares across the screen
-    for (
-        let x = spacing / 2;
-        x < width;
-        x += spacing
-    ) {
+    for (let x = spacing / 2; x < width; x += spacing) {
 
         // y loop repeats squares down the screen
-        for (
-            let y = spacing / 2;
-            y < height;
-            y += spacing
-        ) {
+        for (let y = spacing / 2; y < height; y += spacing) {
 
             // top starts at 0 disorder
             // disorder increases closer to the bottom
@@ -72,23 +52,9 @@ function draw() {
                 maximumDisorder
             );
 
-            // random horizontal movement
-            let horizontalJitter = random(
-                -disorder,
-                disorder
-            );
-
-            // random vertical movement
-            let verticalJitter = random(
-                -disorder,
-                disorder
-            );
-
-            // random square rotation
-            let rotationJitter = random(
-                -disorder,
-                disorder
-            );
+            let horizontalJitter = random(-disorder, disorder);
+            let verticalJitter = random(-disorder, disorder);
+            let rotationJitter = random(-disorder, disorder);
 
             push();
 
@@ -99,11 +65,9 @@ function draw() {
                 y + verticalJitter
             );
 
-            // tilt the square based on disorder
             rotate(rotationJitter);
 
-            // draw square around 0,0
-            // subtracting half makes 0,0 the center
+            // subtracting half makes 0,0 the square's center
             rect(
                 -squareSize / 2,
                 -squareSize / 2,
@@ -111,13 +75,11 @@ function draw() {
                 squareSize
             );
 
-            // resets translate and rotate for next square
             pop();
         }
     }
 }
 
 function windowResized() {
-    // keeps canvas full screen when browser size changes
     resizeCanvas(windowWidth, windowHeight);
 }
