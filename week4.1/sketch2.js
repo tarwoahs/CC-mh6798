@@ -182,22 +182,3 @@ function drawWaveRow(
 
     pop();
 }
-
-// process:
-// earlier version had background lines that felt random and did not add to the idea
-// replaced those lines with more fingerprints so every part supports the concept
-// fingerprints were also spaced awkwardly when they were placed in straight rows
-// changed their positions, sizes and rotations to make the layout feel more natural
-
-// methods:
-// drawFingerprint creates one complete fingerprint
-// drawOpenRidge creates one unfinished oval ridge
-// for loops repeat the ridges from the outside toward the center
-// another for loop adds two echo ridges around each smaller fingerprint
-// translate moves 0,0 to each fingerprint position
-// rotate gives every fingerprint a different direction
-// map changes the ridge sizes and connects the drawing to the mouse
-// sin and cos calculate the points around every curved ridge
-// beginShape, vertex and endShape connect the points into lines
-// modulo (%) moves the openings to different areas of every ridge
-// different function parameters change position, size, rotation and ridge count
