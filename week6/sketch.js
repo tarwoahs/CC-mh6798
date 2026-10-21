@@ -374,7 +374,7 @@ function drawWaterBowl(minutes) {
     fill(187, 224, 227);
     ellipse(765, 458, 235, 58);
 
-    // 7 rows with 60 droplets total = seconds
+    // 7 rows with 60 droplets total = minutes
     let rowCounts = [6, 8, 10, 12, 10, 8, 6];
 
     // counts each droplet
