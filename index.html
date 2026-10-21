@@ -1,27 +1,322 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>    
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-    </style>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-  </head>
-  <body>
-    <h1>Michelle - mh6798</h1>
-    <ul>
-      <li><a href="./week1/index.html">Assignment 1 - Creative Coding is...</a></li>
-      <li><a href="./week1/README.html">Assignment 1 - notes</a></li>
-      <li><a href="./week2/index.html">Assignment 2 - Process Drawing</a></li>
-      <li><a href="./week3/index1.html">Assignment 3 - Idea 1</a></li>
-      <li><a href="./week3/index2.html">Assignment 3 - Idea 2</a></li>
-      <li><a href="./week3/index3.html">Assignment 3 - Idea 3</a></li>
-      <li><a href="./week4.1/index1.html">Assignment 4.1 - Idea 1</a></li>
-      <li><a href="./week4.1/index2.html">Assignment 4.1 - Idea 2</a></li>
-      <li><a href="./week4.1/index3.html">Assignment 4.1 - Final Idea 2.1 </a></li>
-      <li><a href="./week6/index.html">Assignment 5 - Clocks </a></li>
-    </ul>
-  </body>
+
+    <title>Michelle Huang - Creative Coding</title>
+
+    <style>
+        /* general */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px;
+            background-color: white;
+            color: #222222;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* header */
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+            margin: 0 0 10px;
+        }
+
+        header p {
+            font-size: 15px;
+            color: #888888;
+            margin: 0;
+        }
+
+
+        /* project layout */
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px 25px;
+            max-width: 1100px;
+        }
+
+
+        /* clickable colored boxes */
+        .preview {
+            height: 160px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .preview h2 {
+            font-size: 28px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .preview:hover {
+            opacity: 0.8;
+        }
+
+
+        /* project colors */
+        .blue {
+            background-color: #d5f2fa;
+            color: #264653;
+        }
+
+        .pink {
+            background-color: #fbdaf3;
+            color: #6e426c;
+        }
+
+        .purple {
+            background-color: #e4e3fc;
+            color: #464777;
+        }
+
+        .peach {
+            background-color: #ffead4;
+            color: #795537;
+        }
+
+        .green {
+            background-color: #e0f1da;
+            color: #3e6745;
+        }
+
+
+        /* project titles */
+        .project h3 {
+            font-size: 22px;
+            font-weight: normal;
+            margin: 0 0 12px;
+        }
+
+
+        /* project tags */
+        .tags {
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #aaaaaa;
+            color: #888888;
+            padding: 5px 8px;
+            font-size: 11px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+
+        /* project links */
+        .links a {
+            display: inline-block;
+            color: #777777;
+            font-size: 14px;
+            text-decoration: none;
+            margin-right: 15px;
+            margin-bottom: 8px;
+        }
+
+        .links a:hover {
+            color: #222222;
+            text-decoration: underline;
+        }
+
+
+        /* footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            color: #888888;
+            font-size: 13px;
+        }
+
+
+        /* smaller screens */
+        @media (max-width: 700px) {
+            body {
+                padding: 20px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .preview {
+                height: 140px;
+            }
+
+            .preview h2 {
+                font-size: 25px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- header -->
+    <header>
+        <h1>Michelle Huang</h1>
+        <p>Creative Coding / NYU IDM / Fall 2026</p>
+    </header>
+
+
+    <!-- assignments -->
+    <main class="projects">
+
+
+        <!-- assignment 1 -->
+        <div class="project">
+
+            <a href="./week1/index.html" class="preview blue">
+                <h2>Creative Coding is...</h2>
+            </a>
+
+            <h3>Creative Coding is...</h3>
+
+            <div class="tags">
+                <span class="tag">INTRODUCTION</span>
+                <span class="tag">WEEK 1</span>
+            </div>
+
+            <div class="links">
+                <a href="./week1/index.html">View Assignment ↗</a>
+                <a href="./week1/README.html">Notes ↗</a>
+            </div>
+
+        </div>
+
+
+        <!-- assignment 2 -->
+        <div class="project">
+
+            <a href="./week2/index.html" class="preview pink">
+                <h2>Process Drawing</h2>
+            </a>
+
+            <h3>Process Drawing</h3>
+
+            <div class="tags">
+                <span class="tag">P5.JS</span>
+                <span class="tag">WEEK 2</span>
+            </div>
+
+            <div class="links">
+                <a href="./week2/index.html">View Assignment ↗</a>
+                <a href="./week2/README.html">Notes ↗</a>
+            </div>
+
+        </div>
+
+
+        <!-- assignment 3 -->
+        <div class="project">
+
+            <a href="./week3/index1.html" class="preview purple">
+                <h2>Iterations</h2>
+            </a>
+
+            <h3>Iterations</h3>
+
+            <div class="tags">
+                <span class="tag">ITERATIONS</span>
+                <span class="tag">WEEK 3</span>
+            </div>
+
+            <div class="links">
+                <a href="./week3/index1.html">Idea 1 ↗</a>
+                <a href="./week3/index2.html">Idea 2 ↗</a>
+                <a href="./week3/index3.html">Idea 3 ↗</a>
+                <a href="./week3/README.html">Notes ↗</a>
+            </div>
+
+        </div>
+
+
+        <!-- assignment 4 -->
+        <div class="project">
+
+            <a href="./week4.1/index3.html" class="preview peach">
+                <h2>Iteration Generation</h2>
+            </a>
+
+            <h3>Iteration Generation</h3>
+
+            <div class="tags">
+                <span class="tag">GENERATIVE ART</span>
+                <span class="tag">WEEK 4</span>
+            </div>
+
+            <div class="links">
+                <a href="./week4.1/index1.html">Idea 1 ↗</a>
+                <a href="./week4.1/index2.html">Idea 2 ↗</a>
+                <a href="./week4.1/index3.html">Final Idea 2.1 ↗</a>
+                <a href="./week4.1/README.html">Notes ↗</a>
+            </div>
+
+        </div>
+
+
+        <!-- assignment 5 -->
+        <div class="project">
+
+            <a href="./week6/index.html" class="preview green">
+                <h2>Taro Time</h2>
+            </a>
+
+            <h3>Taro Time</h3>
+
+            <div class="tags">
+                <span class="tag">CLOCKS</span>
+                <span class="tag">P5.JS</span>
+                <span class="tag">WEEK 6</span>
+            </div>
+
+            <div class="links">
+                <a href="./week6/index.html">View Assignment ↗</a>
+                <a href="./week6/README.html">Notes ↗</a>
+            </div>
+
+        </div>
+
+
+        <!-- add future assignments here -->
+
+
+    </main>
+
+
+    <!-- footer -->
+    <footer>
+        Michelle Huang / mh6798 / Creative Coding 2026
+    </footer>
+
+</body>
 </html>
