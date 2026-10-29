@@ -69,7 +69,7 @@ function netherPortal(pg) {
     pg.noStroke();
 
     // dark obsidian blocks with brighter purple details
-    // the filling for the code
+    // the filling for the
     for (let y = 0; y < 400; y += 20) {
         for (let x = 0; x < 400; x += 20) {
             if ((x + y) % 60 === 0) {
@@ -322,7 +322,7 @@ function keyPressed() {
             break;
 
         case "l":
-            pMapper.load("map3.json");
+            pMapper.load("map.json");
             break;
 
         case "t":
