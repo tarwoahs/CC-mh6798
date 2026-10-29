@@ -322,7 +322,7 @@ function keyPressed() {
             break;
 
         case "l":
-            pMapper.load("map.json");
+            pMapper.load("map1.json");
             break;
 
         case "t":
