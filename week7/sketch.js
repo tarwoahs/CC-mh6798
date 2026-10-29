@@ -318,11 +318,11 @@ function keyPressed() {
             break;
 
         case "s":
-            pMapper.save("map.json");
+            pMapper.save("map4.json");
             break;
 
         case "l":
-            pMapper.load("map1.json");
+            pMapper.load("map4.json");
             break;
 
         case "t":
