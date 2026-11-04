@@ -1,93 +1,220 @@
-let threshold = 20; //255 is white, 0 is black
-let aveX, aveY; //this is what we are trying to find
-let objectR =255;
-let objectG = 0;
-let objectB = 0;
-let debug = true;
+/*
+ * Michelle Huang
+ * Creative Coding Week 8 Assignment
+ * Fragmented Self
+ * 
+ * interaction:
+ * mouse left/right = changes how fast the fragments move
+ * mouse up/down = changes the glitch intensity
+ * 's' = saves the current portrait
+ */
+
+
+let camera;
+let fragments = [];
+
+let cameraWidth = 640;
+let cameraHeight = 480;
+
+let imageScale = 600 / cameraWidth;
+let portraitX = 180;
+let portraitY = 95;
+
+// area of webcam where my face should be
+let faceX = 154;
+let faceY = 67;
+let faceWidth = 333;
+let faceHeight = 346;
+
+// 4x4 grid of face fragments
+let fragmentColumns = 4;
+let fragmentRows = 4;
+let fragmentWidth = faceWidth / fragmentColumns;
+let fragmentHeight = faceHeight / fragmentRows;
+
 
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(960, 640);
   pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(640, 480);
-  video.hide();
+  frameRate(20);
+
+  // starts webcam and hides original video
+  camera = createCapture(VIDEO);
+  camera.size(cameraWidth, cameraHeight);
+  camera.hide();
+
+  noStroke();
+
+  // divides face into 16 fragments
+  for (let row = 0; row < fragmentRows; row++) {
+    for (let col = 0; col < fragmentColumns; col++) {
+
+      // gets the position of each fragment from the webcam
+      let oneFragment = {
+        sourceX: floor(faceX + col * fragmentWidth),
+        sourceY: floor(faceY + row * fragmentHeight),
+
+        // random starting positions
+        x: random(0, width - fragmentWidth * imageScale),
+        y: random(0, height - fragmentHeight * imageScale),
+
+        // random movement direction and speed
+        moveX: random(-1.2, 1.2),
+        moveY: random(-1.2, 1.2)
+      };
+
+      fragments.push(oneFragment);
+    }
+  }
 }
 
-function draw(){
+function draw() {
+  background(210, 213, 216);
 
-    video.loadPixels();
+  // wait camera start
+  if (!camera.elt || camera.elt.readyState < 2) {
+    return;
+  }
 
-    let totalFoundPixels= 0;  //we are going to find the average location of change pixes so
-    let sumX = 0;  //we will need the sum of all the x find, the sum of all the y find and the total finds
-    let sumY = 0;
+  // gets the current webcam frame and pixel values
+  let cameraImage = camera.get();
+  cameraImage.loadPixels();
 
-    //enter into the classic nested for statements of computer vision
-    for (let row = 0; row < video.height; row++) {
-      for (let col = 0; col < video.width; col++) {
-        //the pixels file into the room long line you use this simple formula to find what row and column the sit in 
+  // makes a black and white copy of webcam
+  let grayImage = cameraImage.get();
+  grayImage.filter(GRAY);
 
-        let offset = (row * video.width + col)*4;
-        //pull out the same pixel from the current frame 
-        let thisColor = video.pixels[offset];
+  // makes another copy to blur the face
+  let blurredImage = grayImage.get();
+  blurredImage.filter(BLUR, 4);
 
-        //pull out the individual colors for both pixels
-        let r = video.pixels[offset];
-        let g = video.pixels[offset + 1];
-        let b = video.pixels[offset + 2];
+  // draws blurred face in center
+  image(
+    blurredImage,
+    portraitX,
+    portraitY,
+    cameraWidth * imageScale,
+    cameraHeight * imageScale
+  );
 
-        //in a color "space" you find the distance between color the same whay you would in a cartesian space, phythag or dist in processing
-        let diff = dist(r, g, b, objectR, objectG, objectB);
+  // mouseY controls how much color is added
+  let glitchAmount = map(mouseY, 0, height, 0, 200, true);
 
-        if (diff < threshold) {  //if it is close enough in size, add it to the average
-          sumX = sumX + col;
-          sumY= sumY + row;
-          totalFoundPixels++;
-         // if (debug) video.pixels[offset] = 0xff000000;//debugging
+  let colorImage = cameraImage.get();
+  colorImage.loadPixels();
+
+  // loops through pixels in the face area
+  for (let y = faceY; y < faceY + faceHeight; y++) {
+    for (let x = faceX; x < faceX + faceWidth; x++) {
+
+      // converts x and y into pixel array index
+      let pixelIndex = 4 * (y * cameraImage.width + x);
+
+      // gets the RGB values of each pixel
+      let r = cameraImage.pixels[pixelIndex];
+      let g = cameraImage.pixels[pixelIndex + 1];
+      let b = cameraImage.pixels[pixelIndex + 2];
+
+      // calculates average brightness
+      let brightness = (r + g + b) / 3;
+
+      // alternates between red, green, and blue every 18 pixels
+      let colorBand = floor((y - faceY) / 18) % 3;
+
+      // only changes pixels brighter than 65
+      if (brightness > 65) {
+        if (colorBand === 0) {
+          colorImage.pixels[pixelIndex] = min(255, r + glitchAmount);
+        }
+        else if (colorBand === 1) {
+          colorImage.pixels[pixelIndex + 1] = min(255, g + glitchAmount);
+        }
+        else {
+          colorImage.pixels[pixelIndex + 2] = min(255, b + glitchAmount);
         }
       }
     }
-    video.updatePixels();
+  }
 
-    image(video,0,0);
+  // updates the changed pixel colors
+  colorImage.updatePixels();
+  // divides the face into horizontal strips
+  let stripHeight = 12;
 
-    if (totalFoundPixels > 0){
-      aveX = sumX/totalFoundPixels;
-      aveY = sumY/totalFoundPixels;
-      fill(objectR, objectG, objectB);
-      ellipse(aveX-10,(aveY-10),20,20);
+  for (let y = faceY; y < faceY + faceHeight; y += stripHeight) {
+
+    let oneStrip = colorImage.get(faceX, y, faceWidth, stripHeight);
+    // sin moves each strip back and forth
+    // mouseY changes how far they move
+    let shift = sin(frameCount * 0.1 + y * 0.2) * glitchAmount * 0.15;
+
+    image(
+      oneStrip,
+      portraitX + faceX * imageScale + shift,
+      portraitY + y * imageScale,
+      faceWidth * imageScale,
+      stripHeight * imageScale
+    );
+  }
+
+  // covers some parts of the face to create missing pieces
+  for (let i = 0; i < fragments.length; i++) {
+
+    // every 3rd fragment leaves a faded empty space
+    if (i % 3 === 0) {
+      let oneFragment = fragments[i];
+
+      fill(210, 213, 216, 145);
+
+      rect(
+        portraitX + oneFragment.sourceX * imageScale,
+        portraitY + oneFragment.sourceY * imageScale,
+        fragmentWidth * imageScale,
+        fragmentHeight * imageScale
+      );
     }
+  }
+
+  // mouseX controls how fast the pieces move
+  let fragmentSpeed = map(mouseX, 0, width, 0.5, 3, true);
+
+  // moves each fragment around the canvas
+  for (let i = 0; i < fragments.length; i++) {
+    let oneFragment = fragments[i];
+    oneFragment.x += oneFragment.moveX * fragmentSpeed;
+    oneFragment.y += oneFragment.moveY * fragmentSpeed;
+
+    // bounces when reaching the canvas edges
+    if (oneFragment.x < 0 ||
+        oneFragment.x > width - fragmentWidth * imageScale) {
+      oneFragment.moveX *= -1;
+    }
+
+    if (oneFragment.y < 0 ||
+        oneFragment.y > height - fragmentHeight * imageScale) {
+      oneFragment.moveY *= -1;
+    }
+    // crops a piece from the live webcam
+    let onePiece = grayImage.get(
+      oneFragment.sourceX,
+      oneFragment.sourceY,
+      floor(fragmentWidth),
+      floor(fragmentHeight)
+    );
+    // draws the fragment at its moving position
+    image(
+      onePiece,
+      oneFragment.x,
+      oneFragment.y,
+      fragmentWidth * imageScale,
+      fragmentHeight * imageScale
+    );
+  }
 }
 
-function mousePressed(){
-  //if they click, use that picture for the new thing to follow
- // var offset = mouseY * video.width + mouseX;
-
-  //pull out the same pixel from the current frame 
-  let thisColor = video.get(mouseX,mouseY);
-
-  //pull out the individual colors for both pixels
-   objectR = thisColor[0];
-   objectG = thisColor[1];
-   objectB = thisColor[2];
-  println("Chasing new color  " + objectR + " " + objectG + " " + objectB);
-}
-
+// 's' saves a screenshot
 function keyPressed() {
-  //for adjusting things on the fly
-  if (key == '-') {
-    threshold--;
-    println("Threshold " + threshold);
-  } 
-  else if (key == '=') {
-    threshold++;
-    println("Threshold " + threshold);
-  }
-  else if (key == 'd') {
-    background(255);
-    debug = !debug;
-    println("Debug " + debug);
-  }
-  else if (key == 't') {
-    println("Time Between Frames " + ellapsedTime);
+  if (key === "s" || key === "S") {
+    saveCanvas("fragmented-self", "png");
   }
 }
