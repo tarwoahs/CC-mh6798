@@ -21,8 +21,7 @@ async function setup() {
     video = createCapture(VIDEO);
     video.size(800, 600);
     video.hide();
-
-    // load and start detecting faces
+    
 faceMesh = await ml5.faceMesh({ maxFaces: 1 });
 console.log("FaceMesh loaded!");
 
