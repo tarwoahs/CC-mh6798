@@ -1,69 +1,9 @@
-# Fragmented Self
+# i love apples and pizza
 
-For this assignment, I wanted to explore fragmented identity and how we perceive ourselves. I was inspired by images of blurred faces, digital glitches, and misplaced puzzle pieces. I liked how these portraits were still recognizable as people, but something about them felt slightly uncanny or unfamiliar. I wanted to recreate that feeling using a live webcam. I decided to make my face blurry and add colorful horizontal glitches to distort how it appears on screen. I also divided parts of my face into rectangular fragments that continuously move around the canvas. I wanted these pieces to resemble a puzzle that never fully comes together, even though all the pieces are still there.
+For this assignment, I wanted to make something silly and interactive using facial gestures. I initially considered making a game based on the 6-7 meme, where I could count how many times someone performed the gesture with their hands. However, I eventually decided to make a simple game where I could catch falling food using my mouth. I liked the idea of turning something as ordinary as opening your mouth into a way of controlling a game. I decided to use apples and pizza because they were easy to recreate using basic shapes in p5.js. I also wanted the game to feel a little chaotic as it progressed, so I made the food fall faster and appear more frequently over time.
 
-I used pixel brightness to change the colors of certain areas of my face, while mouse movement controls the glitch intensity and how quickly the fragments move. I wanted to explore how much an image of ourselves can be distorted while still remaining recognizable, and how our perception of ourselves isn't always complete or consistent.
+I used ml5.js FaceMesh to track my face through a live webcam. Rather than displaying all the facial landmarks, I decided to focus only on the mouth because that was the main part of the interaction. I added cyan points around my lips to show how the program was tracking my movements. I used the upper and lower lip points to calculate how open my mouth was with dist(). I also used the two corners of my mouth to calculate its width, which helped me determine whether my mouth was open based on the proportions of my mouth rather than a fixed distance. I mirrored the webcam using translate() and scale() so moving my head left and right would feel more natural.
 
-I used createCapture(VIDEO) to capture my face and applied GRAY and BLUR filters to distort it. I used nested for loops and arrays to create moving fragments of my face. For the colorful glitches, I used loadPixels() to access RGB values and changed pixel colors based on their brightness, then used updatePixels() to apply the changes. I also used sin() to move the horizontal strips and map() with mouseX and mouseY to control the fragment speed and glitch intensity.
+For the game itself, I used basic shapes such as circle(), rect(), and triangle() to draw the apples and pizza slices. At first, I had only one piece of food falling at a time, but I wanted to make the game more challenging. I changed the code to use an array to store multiple pieces of food, allowing several apples and pizzas to fall at once. I used random() to determine where the food would appear and increased the falling speed and frequency every ten seconds. I also added a collision condition that checks whether the food is close enough to my mouth while it is open. If both conditions are met, the food disappears and my score increases. I used millis() to create a 30-second timer and added the option to restart the game by pressing R.
 
-# template
-
----
-
-This is a README file that can be used to describe and document your assignment.
-
-Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
-
----
-
-# Heading1
-## Heading2
-### Heading3
-#### Heading4
-##### Heading5
-###### Heading6
-
-**bold text**
-
-*italicized text*
-
-~~strikethrough text~~
-
-Ordered List:
-1. First item
-2. Second item
-3. Third item
-
-Unordered List:
-- First item
-- Second item
-- Third item
-
-`short code block`
-
-```
-extended code block
-fun() {
-  return 0
-}
-```
-
-Link:  
-[linked text](https://www.example.com)
-
-
-Image with url:  
-![image description](https://dm-gy-6063-2024f-b.github.io/assets/homework/02/clark-espaco-modulado-00.jpg)
-
-
-Image on repo:  
-![image description](./file-name.jpg)
-
-
-To start a new line, add two spaces at the end of a line, like this:  
-this is a new line.
-
-
-To start a new paragraph, leave an empty line between two lines of text.
-
-This is a new paragraph.
+I wanted to keep the overall design simple and playful, so I used Comic Sans for the text and kept the food drawings fairly basic. One limitation of the game is that it doesn't actually know whether I'm eating the food. It only checks if my mouth is open and whether the food is within a certain distance of it. This means the interaction depends on how accurately FaceMesh detects my mouth and how well I position myself in front of the camera. I thought it was interesting how a relatively small movement, like opening my mouth, could become the main control for an entire game.
