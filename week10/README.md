@@ -26,7 +26,7 @@ For my third song, I chose the Cash Shop soundtrack from MapleStory because it f
 
 ## Controls and Reflection
 
-I used createSlider() and createButton() to let users adjust Kirby's flight sensitivity, halo intensity, and stars, along with play, pause, and restart controls. I also added keyboard shortcuts using keyPressed() so users could make quicker adjustments during playback.
+I used createSlider() and createButton() to let users adjust Kirby's flight sensitivity, halo intensity, and stars, play, pause, and restart controls. I also added keyboard shortcuts using keyPressed() so users could make quicker adjustments during playback.
 
 I found these controls helpful because different songs have different moods and levels of intensity. For example, Pigstep suited stronger halo reactions, while the MapleStory soundtrack felt better with gentler movements. However, adjusting the settings could also distract from listening to the music, which is why I included both sliders and keyboard shortcuts.
 

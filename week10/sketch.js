@@ -155,7 +155,7 @@ function keyPressed() {
     if (k === " ") return false;
 }
 
-// measure energy in part of the frequency spect
+// measure energy in part of the frequency spectrum
 function bandEnergy(spectrum, lowHz, highHz) {
     let nyquist = getAudioContext().sampleRate / 2;
     let low = floor(lowHz / nyquist * spectrum.length);
