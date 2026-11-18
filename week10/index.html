@@ -1,13 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>i love apples and pizza</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="robots" content="noindex">
 
+    <title>Kirby's Musical Dreamland</title>
+    
     <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 25px;
+            background: #f8eef7;
+            color: #715679;
+            font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 38px;
+            font-weight: normal;
+            color: #bf70ad;
+            margin: 0 0 10px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 0 0 20px;
+        }
+
+        #sketch-holder canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        #controls {
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: 15px;
+            color: #715679;
+            background: #f4d9ec;
+            border: 2px solid #d5a6cb;
+            border-radius: 12px;
+            padding: 9px 25px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #efc8e3;
+        }
+
+        .sliders {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .slider-group {
+            background: #ffffffa6;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .slider-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .slider-group input {
+            width: 100%;
+            accent-color: #d684b7;
+            cursor: pointer;
+        }
+
+        .key-guide {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
+            margin-top: 16px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 550px) {
+            .sliders {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h1>Kirby's Musical Dreamland</h1>
+        <p>Feed Kirby a song and watch him fly!</p>
+
+        <div id="sketch-holder"></div>
+
+        <div id="controls">
+
+            <div class="buttons">
+                <div id="play-control"></div>
+                <div id="restart-control"></div>
+            </div>
+
+            <div class="sliders">
+
+                <div class="slider-group">
+                    <label>Flight: <span id="flight-value">85</span></label>
+                    <div id="flight-slider"></div>
+                </div>
+
+                <div class="slider-group">
+                    <label>Halo: <span id="halo-value">80</span></label>
+                    <div id="halo-slider"></div>
+                </div>
+
+                <div class="slider-group">
+                    <label>Stars: <span id="star-value">70</span></label>
+                    <div id="star-slider"></div>
+                </div>
+
+            </div>
+
+            <div class="key-guide">
+                <span>SPACE: Play / Pause</span>
+                <span>R: Restart</span>
+                <span>Q / A: Flight</span>
+                <span>W / S: Halo</span>
+                <span>E / D: Stars</span>
+            </div>
+
+        </div>
+    </main>
 
     <script src="sketch.js"></script>
 </body>
