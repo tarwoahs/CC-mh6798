@@ -6,6 +6,10 @@ For my final project, I am currently debating between revisiting my Week 9 and W
 
 [Original Assignment](../week9/index.html) | [Documentation](../week9/README.html)
 
+### Concept Sketch
+
+![I Love Apples and Pizza Concept](sketch1.jpg)
+
 ### 1. Assignment I am revisiting
 
 For my Week 9 assignment on gestural interaction, I created a small game using ml5.js and FaceMesh where users could eat apples and pizza by opening their mouths in front of a webcam. I had a lot of fun working on this assignment because I thought it was interesting to interact with a game without having to use a keyboard or mouse. I liked being able to play this with my friends when we were bored, EVEN AFTER the assignment was finished. I also think there is a lot of potential to make the game more entertaining.
@@ -32,6 +36,10 @@ I plan to work from my existing code and continue using p5.js and ml5.js while i
 For my Week 11 assignment on data visualization, I created an interactive Studio Ghibli movie gallery using information from the Studio Ghibli API. I used the Rotten Tomatoes ratings to determine how many tomatoes were thrown at each movie poster, how frequently the splat sounds played, and whether the audience cheered afterward. I really enjoyed coming up with a more playful way of visualizing data, especially playing around with the irony of Rotten Tomatoes.
 
 [Original Assignment](../week11/index.html) | [Documentation](../week11/README.html)
+
+### Concept Sketch
+
+![Certified Rotten Concept](sketch2.jpg)
 
 ### 2. How I plan to change my previous work
 
