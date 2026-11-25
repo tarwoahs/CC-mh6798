@@ -8,7 +8,7 @@ For my final project, I am currently debating between revisiting my Week 9 and W
 
 ### Concept Sketch
 
-![I Love Apples and Pizza Concept](sketch1.jpg)
+![I Love Apples and Pizza Concept](sketch1.jpeg)
 
 ### 1. Assignment I am revisiting
 
@@ -39,7 +39,7 @@ For my Week 11 assignment on data visualization, I created an interactive Studio
 
 ### Concept Sketch
 
-![Certified Rotten Concept](sketch2.jpg)
+![Certified Rotten Concept](sketch2.jpeg)
 
 ### 2. How I plan to change my previous work
 
